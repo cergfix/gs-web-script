@@ -1,18 +1,19 @@
 #!/bin/bash
 
-if [[ "$1" = "" ]]; then
+if [[ "$1" = "" || "$2" = "" ]]; then
     echo ""
     echo "Argument missing."
-    echo "Usage: fetch.sh www.example.com"
+    echo "Usage: fetch.sh www.example.com src/en/"
     echo ""
     exit 1
 fi
 
-if [[ ! -d src ]]; then
-    mkdir -v src
+if [[ ! -d $2 ]]; then
+    echo "SRC directory exists, exiting .."
+    exit 1
 fi
 
 echo "Fetching from $1 .."
-gsutil -m rsync -r -d gs://$1/ src/
+gsutil -m rsync -r -d gs://$1/ $2
     
 exit 0
