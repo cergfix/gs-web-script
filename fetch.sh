@@ -9,7 +9,7 @@ if [[ "$1" = "" || "$2" = "" ]]; then
 fi
 
 if [[ ! -d $2 ]]; then
-    echo "SRC directory exists, exiting .."
+    echo "DEST directory <$2> doesn't exist, exiting .."
     exit 1
 fi
 
